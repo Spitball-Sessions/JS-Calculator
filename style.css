@@ -1,0 +1,55 @@
+.container{
+    justify-self: center;
+    align-self: center;
+    max-width: 620px;
+    min-height: 540px;
+    width: 80%;
+    height: 80%;
+    border: solid black;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+#keypadBox{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 2%;
+    width: 600px;
+    min-height: 400px;
+}
+
+#0{
+    width: 200%;
+}
+
+#calculatorScreen{
+    max-width: 600px;
+    min-height: 120px;
+    display: flex;
+}
+
+#calculatorDisplay{
+    display: flex;
+    max-width: 600px;
+    max-height: 100px;
+    width: 100%;
+    height: 90%;
+    border: solid brown 2px;
+    background-color:lightgray;
+    align-self: center;
+    justify-self: center;
+    align-items: flex-end;
+    justify-content: flex-end;
+    
+}
+
+#displayText{
+    margin-right: 2%;
+    margin-bottom: 2%;
+    font-size: 30pt;
+}
+
+button{
+    font-size: 40pt;
+    font-family: "Anta", sans-serif;
+}
