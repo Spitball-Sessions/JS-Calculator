@@ -65,10 +65,16 @@ function performCalculation(){
 
 
 
-function resetVariables(){
+function resetVariablesForEquals(){
     frstNum = "";
     scndNum = "";
     funcPerformed = "";
+    memNum = "";
+}
+
+function resetNumbersForNextCalculations(){
+    frstNum = memNum;
+    scndNum = "";
     memNum = "";
 }
 
@@ -87,11 +93,12 @@ function handleEvent(button){
     else if (button.classList.contains("functionKey")){
         if(funcPerformed == ""){
             funcPerformed += button.textContent;
-            displayScreen.textContent = "";
+            displayScreen.textContent = frstNum + funcPerformed;
         }
         else if (funcPerformed != ""){
             memNum = performCalculation();
             calcHistory.push(memNum);
+            resetNumbersForNextCalculations
             funcPerformed += button.textContent;
         }
     }
@@ -103,7 +110,7 @@ function handleEvent(button){
         else{
             memNum = performCalculation();
             calcHistory.push(memNum);
-            resetVariables();
+            resetVariablesForEquals();
         }
     }
 }
