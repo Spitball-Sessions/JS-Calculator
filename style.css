@@ -38,9 +38,24 @@ button:disabled{
     background-color:white;
 }
 
+.span1{
+    font-size: large;
+    text-align: right;
+    color:black;
+    align-self:flex-end;
+}
+
+.span2{
+    font-size: small;
+    text-align: left;
+    color: blue;
+}
+
 .memoryButton{
     height: 43px;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 #keypadBox{
     display: grid;

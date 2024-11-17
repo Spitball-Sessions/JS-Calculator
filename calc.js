@@ -4,17 +4,17 @@ const memoryPalace = document.getElementById("memoryPalace")
 
 let frstNum = "";
 let scndNum = "";
-let memNum = "";
 let funcPerformed = "";
 const calcHistory = [];
 
 
 
+
 function createButtons(){
-    const buttons = ["1","2","3","+","<",
-                     "4","5","6","-","C",
-                     "7","8","9","/","=",
-                     "%","0",".","*"];
+    const buttons = ["1","2","3","/","<",
+                     "4","5","6","*","C",
+                     "7","8","9","-","=",
+                     "%","0",".","+"];
 
     const pussycatDolls = [];
         //creates buttons and assigns classes.
@@ -48,18 +48,28 @@ function createButtons(){
 }
 
 function createMemoryButtons(){
-    set = [];
+    pussycatDolls = [];
     let n = 0;
     for (let n = 0; n<= 8; n++){
         const button = document.createElement("button");
         button.classList.add("memoryButton");
         button.disabled = true;
         button.textContent = "";
-        button.setAttribute("id",n);
+        button.setAttribute("id","m"+n);
         memoryPalace.appendChild(button);
-        set.push(button);
+
+        span2 = document.createElement("span");
+        span2.classList.add("span2");
+        span1 = document.createElement("span");
+        span1.classList.add("span1");
+
+        button.appendChild(span2);
+        button.appendChild(span1);
+
+
+        pussycatDolls.push(button);
     }
-    return set;
+    return pussycatDolls;
 }
 
 function performCalculation(){
@@ -69,39 +79,82 @@ function performCalculation(){
     switch(funcPerformed){
         case "+":
             result = num1 + num2;
+            equation = frstNum + " + " + scndNum;
             break;
         case "-":
             result = num1 - num2;
+            equation = frstNum + " - " + scndNum;
             break;
         case "*":
             result = num1 * num2;
+            equation = frstNum + " * " + scndNum;
             break;
         case "/":
             result = num1 / num2;
+            equation = frstNum + " / " + scndNum;
             break;
+        case "%":
+            result = num1 % num2;
+            equation = frstNum + " % " + scndNum;
+            break
     }
 
     displayScreen.textContent = result;
-    return result
+    return [result, equation];
 }
 
+function updateMemory(){
+    // Loop through calcHistory
+    for (let i = calcHistory.length - 1; i >=0; i--) {
+        let memNum = calcHistory[i].memNum; // First element of the sub-array
+        let equation = calcHistory[i].equation; // Second element of the sub-array
+
+        const clearSpan1 = document.getElementsByClassName("span1");
+        const clearSpan2 = document.getElementsByClassName("span2");
+
+        // Find the button by id
+        const button = document.getElementById("m"+i); // Assuming button IDs match the index
+            button.disabled = false;
+
+            // Update spans inside the button
+            const span1 = button.querySelector(".span1"); // Assuming span1 has class 'span1'
+            const span2 = button.querySelector(".span2"); // Assuming span2 has class 'span2'
+
+            span1.textContent = memNum; // Update memNum
+            span2.textContent = equation; // Update equation
+        }
+    }
 
 
 function resetVariablesForEquals(){
     frstNum = "";
     scndNum = "";
     funcPerformed = "";
-    memNum = "";
 }
 
 function resetNumbersForNextCalculations(memNum){
     frstNum = memNum;
     scndNum = "";
-    memNum = "";
     funcPerformed ="";
 }
 
+function recallmemory(button){
+    const span1 = button.querySelector(".span1");
+
+    if (funcPerformed == ""){
+        frstNum = span1.textContent;
+        displayScreen.textContent = frstNum;
+    }
+    else{
+        scndNum = span1.textContent;
+        displayScreen.textContent = scndNum;
+    }
+}
+
 function handleEvent(button){
+    let memNum = "";
+    let equation = "";
+
     if (button.classList.contains("number")){
         if (funcPerformed == ""){
             frstNum += button.textContent;
@@ -119,8 +172,9 @@ function handleEvent(button){
             displayScreen.textContent = frstNum + funcPerformed;
         }
         else if (funcPerformed != ""){
-            memNum = performCalculation();
-            calcHistory.push(memNum);
+            [memNum,equation] = performCalculation();
+            calcHistory.push({equation,memNum});
+            updateMemory();
             resetNumbersForNextCalculations(memNum);
             funcPerformed += button.textContent;
             displayScreen.textContent = frstNum + funcPerformed;
@@ -157,8 +211,9 @@ function handleEvent(button){
             displayScreen.textContent = frstNum;
         }
         else{
-            memNum = performCalculation();
-            calcHistory.push(memNum);
+            [memNum,equation] = performCalculation();
+            calcHistory.push({equation,memNum});
+            updateMemory();
             resetVariablesForEquals();
         }
     }
@@ -180,8 +235,19 @@ function handleEvent(button){
 const buttons = createButtons();
 const memories = createMemoryButtons();
 
+console.log(memoryPalace.querySelectorAll("button"));
+
 keypadBox.addEventListener("click",(event)=> {
     if(event.target.tagName === "BUTTON"){
         handleEvent(event.target);
+    }
+});
+
+memoryPalace.addEventListener('click', (event) => {
+    console.log("Clicked element:", event.target); // Debug log
+    const button = event.target.closest("button");
+    console.log("Closest button:", button); // Should show the button or null
+    if (button) {
+        recallmemory(button);
     }
 });
