@@ -1,9 +1,66 @@
+html, body {
+    margin: 0;             /* Remove default margin */
+    padding: 0;            /* Remove default padding */
+    width: 100%;           /* Ensure the body takes full width of the page */
+    height: 100%;          /* Ensure the body takes full height of the page */
+    background-color:steelblue;
+}
+
 body{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
     display: flex;
     flex-direction: row;
     height: 546px;
     width:631px;
     border: solid 3px;
+    align-content: center;
+    align-self: center;
+    background-color: white;
+    box-shadow: 15px 15px 15px darkblue;
+}
+
+button{
+    font-size: 40pt;
+    font-family: "Anta", sans-serif;
+}
+
+#calculatorScreen{
+    width: 108%;
+    min-height: 120px;
+    display: flex;
+    margin-left: -5%;
+}
+
+.calculatorButton{
+    background-color: goldenrod;
+    width:70px;
+    box-shadow:  inset -5px -5px darkgoldenrod, inset 5px 5px yellow;
+}
+
+
+#calculatorDisplay{
+    display: flex;
+    max-width: 600px;
+    max-height: 100px;
+    width: 100%;
+    height: 90%;
+    border: solid brown 2px;
+    background-color:lightgray;
+    align-self: center;
+    justify-self: center;
+    align-items: flex-end;
+    justify-content: flex-end;
+    box-shadow: inset 5px 5px darkgrey;
+    
+}
+
+#displayText{
+    margin-right: 2%;
+    margin-bottom: 2%;
+    font-size: 30pt;
 }
 
 .container{
@@ -19,11 +76,17 @@ body{
     align-content: center;
 }
 
-button{
-    width: 70px;
-    font-size: 40pt;
-    font-family: "Anta", sans-serif;
+#keypadBox{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 2%;
+    width: 100%;
+    min-height: 400px;
+    margin-left: -5%;
 }
+
+
+
 .memoryPalace{
     width:20%;
     height:100%;
@@ -31,6 +94,13 @@ button{
     display: flex;
     flex-direction: column;
     gap:2.1%;
+}
+
+.memoryButton{
+    height: 43px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 button:disabled{
@@ -51,20 +121,6 @@ button:disabled{
     color: blue;
 }
 
-.memoryButton{
-    height: 43px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-#keypadBox{
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    gap: 2%;
-    width: 100%;
-    min-height: 400px;
-    margin-left: -5%;
-}
 
 #0{
     width: 200%;
@@ -74,33 +130,5 @@ button:disabled{
 
 .equals{
     grid-row:span 2;
-}
-
-#calculatorScreen{
-    width: 108%;
-    min-height: 120px;
-    display: flex;
-    margin-left: -5%;
-}
-
-#calculatorDisplay{
-    display: flex;
-    max-width: 600px;
-    max-height: 100px;
-    width: 100%;
-    height: 90%;
-    border: solid brown 2px;
-    background-color:lightgray;
-    align-self: center;
-    justify-self: center;
-    align-items: flex-end;
-    justify-content: flex-end;
-    
-}
-
-#displayText{
-    margin-right: 2%;
-    margin-bottom: 2%;
-    font-size: 30pt;
 }
 
