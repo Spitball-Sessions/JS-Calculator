@@ -1,5 +1,6 @@
 const keypadBox = document.getElementById("keypadBox")
 const displayScreen = document.getElementById("displayText")
+const memoryPalace = document.getElementById("memoryPalace")
 
 let frstNum = "";
 let scndNum = "";
@@ -15,7 +16,7 @@ function createButtons(){
                      "7","8","9","/","=",
                      "%","0",".","*"];
 
-    const pussycatGirls = [];
+    const pussycatDolls = [];
         //creates buttons and assigns classes.
     buttons.forEach((label) => {
         const button = document.createElement("button");
@@ -41,18 +42,24 @@ function createButtons(){
         }
         button.classList.add("calculatorButton");
         keypadBox.appendChild(button);
-        pussycatGirls.push(button);
+        pussycatDolls.push(button);
     })
-    return pussycatGirls
+    return pussycatDolls
 }
 
 function createMemoryButtons(){
-    pussycatGirls = [];
-    let n = 1;
-    while (n <= 10){
+    set = [];
+    let n = 0;
+    for (let n = 0; n<= 8; n++){
         const button = document.createElement("button");
-
+        button.classList.add("memoryButton");
+        button.disabled = true;
+        button.textContent = "";
+        button.setAttribute("id",n);
+        memoryPalace.appendChild(button);
+        set.push(button);
     }
+    return set;
 }
 
 function performCalculation(){
@@ -171,7 +178,7 @@ function handleEvent(button){
 
 
 const buttons = createButtons();
-//const memories = createMemoryButtons();
+const memories = createMemoryButtons();
 
 keypadBox.addEventListener("click",(event)=> {
     if(event.target.tagName === "BUTTON"){

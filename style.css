@@ -33,7 +33,12 @@ button{
     gap:2.1%;
 }
 
-.memButton{
+button:disabled{
+    border:none;
+    background-color:white;
+}
+
+.memoryButton{
     height: 43px;
     width: 100%;
 }
