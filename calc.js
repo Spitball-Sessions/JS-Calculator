@@ -10,10 +10,10 @@ const calcHistory = [];
 
 
 function createButtons(){
-    const buttons = ["1","2","3","+",
-                     "4","5","6","-",
-                     "7","8","9","/",
-                     "=","0",".","*"];
+    const buttons = ["1","2","3","+","<",
+                     "4","5","6","-","C",
+                     "7","8","9","/","=",
+                     "%","0",".","*"];
 
     const pussycatGirls = [];
         //creates buttons and assigns classes.
@@ -30,14 +30,29 @@ function createButtons(){
         else if (label == "="){
             button.classList.add("equals");
         }
+        else if (label == "C"){
+            button.classList.add("clear");
+        }
+        else if (label == "<"){
+            button.classList.add("bksp");
+        }
         else {
-            button.classList.add("functionKey")
+            button.classList.add("functionKey");
         }
         button.classList.add("calculatorButton");
         keypadBox.appendChild(button);
         pussycatGirls.push(button);
     })
     return pussycatGirls
+}
+
+function createMemoryButtons(){
+    pussycatGirls = [];
+    let n = 1;
+    while (n <= 10){
+        const button = document.createElement("button");
+
+    }
 }
 
 function performCalculation(){
@@ -72,10 +87,11 @@ function resetVariablesForEquals(){
     memNum = "";
 }
 
-function resetNumbersForNextCalculations(){
+function resetNumbersForNextCalculations(memNum){
     frstNum = memNum;
     scndNum = "";
     memNum = "";
+    funcPerformed ="";
 }
 
 function handleEvent(button){
@@ -98,9 +114,35 @@ function handleEvent(button){
         else if (funcPerformed != ""){
             memNum = performCalculation();
             calcHistory.push(memNum);
-            resetNumbersForNextCalculations
+            resetNumbersForNextCalculations(memNum);
             funcPerformed += button.textContent;
+            displayScreen.textContent = frstNum + funcPerformed;
         }
+    }
+
+    else if (button.classList.contains("decimal")){
+        if (funcPerformed == ""){
+            if (frstNum == ""){
+                frstNum = "0.";
+                displayScreen.textContent = frstNum;
+            }
+            else{
+                displayScreen.textContent
+            }}
+        else{
+            if (scndNum == ""){
+                scndNum = "0.";
+                displayScreen.textContent = scndNum
+            }
+            else{
+                displayScreen.textContent
+            }
+        }
+    }
+    
+    else if (button.classList.contains("clear")){
+        resetVariablesForEquals();
+        displayScreen.textContent = frstNum
     }
 
     else if (button.classList.contains("equals")){
@@ -113,9 +155,23 @@ function handleEvent(button){
             resetVariablesForEquals();
         }
     }
+
+    else if (button.classList.contains("bksp")){
+        if (funcPerformed == ""){
+            frstNum = frstNum.slice(0,-1);
+            displayScreen.textContent = frstNum
+        }
+        else{
+            scndNum = scndNum.slice(0,-1);
+            displayScreen.textContent = scndNum
+        }
+    }
 }
 
+
+
 const buttons = createButtons();
+//const memories = createMemoryButtons();
 
 keypadBox.addEventListener("click",(event)=> {
     if(event.target.tagName === "BUTTON"){
