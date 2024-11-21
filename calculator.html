@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link href="style.css" rel ="stylesheet">  
+    <link href="https://fonts.google.com/specimen/Anta?lang=en_Latn&categoryFilters=Appearance:%2FTheme%2FTechno;Sans+Serif:%2FSans%2F*" rel="stylesheet">
+    <title>Calculator</title>
+</head>
+<body>
+	<h1 class = "not-in-iframe">Filled Box Calculator</h1>
+	<div id = "outside" class = "outside">
+		<div id="calculatorBody" class="container">
+			<div id = "calculatorScreen">
+				<div id = "calculatorDisplay"><p id = "equationText"></p><p id ="displayText"></p></div>
+			</div>
+			<div id = "keypadBox">
+			</div>
+		</div>
+		<div id = "memoryPalace" class="memoryPalace">
+			<div id = "conversionBox" class="conversionBox">
+				<div id = "note"> <h2>63 Tray (Half Size of 82)</h2>
+				
+
+				<h2>82 Tray:</h2>
+					&emsp;&#8226; 72 Enhanced<br>
+					&emsp;&#8226; 50S Begonia<br><br>
+
+
+				<h2>50D Perennial Trays (Size of 2 82's):</h2>
+					&emsp;&#8226; 50D Annual<br>
+					&emsp;&#8226; 72 Geranium<br>
+					&emsp;&#8226; 72 Begonia<br>
+					&emsp;&#8226; 84 Ipomoea<br>
+
+
+				<h2>32 Enhanced Trays (Size of 3 82's):</h2>
+					&emsp;&#8226; 50D Grass<br>
+					&emsp;&#8226; 28 ColorChoice<br>
+				 </div>
+			 </div>
+		</div>
+    </div>
+	<div id = "instructions" class = "instructions not-in-iframe">
+		<p id ="instructText">Enter the amount of trays you have and then click which tray size they are, as though doing a running total with a calculator.<br>(e.g. "5 82 + 4 63")
+		<br><br>After you have finished entering your trays, press “=”.  The screen should show you how many boxes you’ve filled and how many trays are needed for full boxing.  If you have more than 30 trays, it should show you’ve hit the requirement for Truck shipping. 
+		
+		<br><br>If you press “T” it should then let you add hypothetical trays to see how many you’d need to fill the box.  Pressing “T” again should return you to what it showed before you pressed “T”, in case you need to try something else.
+		
+		<br><br>"C" should reset all calculations, "<" should allow you to backspace.
+		
+	
+		
+		</p>
+	</div>
+    <script src="box_calc.js" defer></script>
+</body>
+</html>

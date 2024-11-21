@@ -1,0 +1,191 @@
+html, body {
+    margin: 0;             /* Remove default margin */
+    padding: 0;            /* Remove default padding */
+    width: 100%;           /* Ensure the body takes full width of the page */
+    height: 100%;          /* Ensure the body takes full height of the page */
+    background-color:white;
+}
+
+body{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    border: solid 3px;
+    align-items: center;
+	justify-content:space-evenly;
+    align-self: center;
+    background-color: white;
+    box-shadow: 15px 15px 15px darkblue;
+	max-width: 9000px;
+	max-height: 830px;
+	background-color:darkgreen;
+	width: fit-content;
+	height:fit-content;
+	padding: 15px;
+}
+
+  /* Hide this content when inside an iframe */
+  @media all and (display-mode: fullscreen) {
+      .not-in-iframe {
+          display: none;
+      }
+  }
+
+  /* Fallback: Always show by default */
+  .not-in-iframe {
+      display: block;
+  }
+
+.outside{
+	display:flex;
+	flex-direction:row;
+	height:546px;
+	width: 650px;
+	border:solid black 2px;	
+	box-shadow: 2px 2px 5px darkgreen;
+}
+
+h1{
+	background-color:goldenrod;
+	margin:0px;
+	width:874px;
+	text-align:center;
+	border: 2px solid black;
+	color:white;
+	box-shadow: 2px 2px 5px darkgreen;
+}
+.instructions{
+	width:870px;
+	height: 200px;
+	justify-content:center;
+	align-content:center;
+	background-color:white;
+	border: solid black 2px;
+	box-shadow: 2px 2px 5px darkgreen;
+}
+
+#instructText{
+	margin:5px;
+	font-size:12pt;
+}
+p{
+    margin: 0%;
+}
+
+h2{
+	margin-bottom:4pt;
+}
+button{
+    font-size: 40pt;
+    font-family: "Anta", sans-serif;
+}
+
+.traySize{
+    font-size: 30pt;
+}
+
+#calculatorScreen{
+    width: 108%;
+    max-width: 600px;
+    height: 100px;
+    display: flex;
+    margin-left: -5%;
+    margin-bottom: 2%;
+}
+
+.calculatorButton{
+    background-color: greenyellow;
+    width:70px;
+    box-shadow:  inset -5px -5px rgb(27, 151, 27), inset 5px 5px rgb(189, 255, 189);
+}
+
+
+#calculatorDisplay{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 100px;
+    width: 100%;
+    height: 90%;
+    border: solid brown 2px;
+    background-color:lightgray;
+    align-self: center;
+    justify-self: center;
+    align-items: flex-end;
+    justify-content: space-between;
+    box-shadow: inset 5px 5px darkgrey;    
+}
+
+#displayText{
+    margin-right: 2%;
+    margin-bottom: 2%;
+    font-size: 30pt;
+}
+
+#equationText{
+	align-self:flex-start;
+	font-size:20pt;
+	margin-left:2%;
+	margin-top: 2%;
+	color: green;
+}
+.container{
+    justify-self: left;
+    align-self: center;
+    max-width: 620px;
+    min-height: 546px;
+    width: 80%;
+    height: 80%;
+    border-right: solid black;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+	background-color:white;
+}
+
+#keypadBox{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 2%;
+    width: 100%;
+    min-height: 400px;
+    margin-left: -5%;
+}
+
+.memoryPalace{
+    width:46%;
+    height:100%;
+    align-content: center;
+    justify-content: center;
+	display:flex;
+    flex-wrap: wrap;
+    background-color:hotpink;
+    color:
+    
+}
+
+#note{
+	padding-left: 8px;
+	padding-right:8px;
+}
+.conversionBox{
+    border: solid deeppink;
+    width: 95%;
+    height: 95%;
+    background-color: white;
+    box-shadow: inset 0px 0px 10px 2px rgb(136, 12, 78)
+}
+
+#0{
+    width: 200%;
+}
+
+
+
+.equals{
+    grid-row:span 2;
+}
+
