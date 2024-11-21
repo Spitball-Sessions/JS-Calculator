@@ -109,7 +109,7 @@ function mathyStuff(){
             result=num;
             break;
         case "50":
-            result=num*2;
+            result = Math.round((num * (8 / 6)) / 0.5) * 0.5;
             break;
         case "32":
             result=num*3;
@@ -147,6 +147,9 @@ function clearCalc(){
     running = 0;
     equation = "";
     traytotal = 0;
+    halftrays = 0;
+    truckflag = false;
+    testModeVar = false;
 }
 
 function resetNumbersForNextCalculations(memNum){
@@ -277,7 +280,7 @@ function testMode(button){
         }
         
     else if (button.classList.contains("test")){
-		if (truckflag = false){
+		if (truckflag == false){
         upperScreenText.textContent = traytotal + " trays = " + boxesNeeded + " box(es)";
         resultText.textContent = "Trays Needed = " + spaceLeft;
 		}
