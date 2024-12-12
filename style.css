@@ -27,18 +27,6 @@ body{
 	padding: 15px;
 }
 
-  /* Hide this content when inside an iframe */
-  @media all and (display-mode: fullscreen) {
-      .not-in-iframe {
-          display: none;
-      }
-  }
-
-  /* Fallback: Always show by default */
-  .not-in-iframe {
-      display: block;
-  }
-
 .outside{
 	display:flex;
 	flex-direction:row;
