@@ -109,10 +109,11 @@ function mathyStuff(){
             result=num;
             break;
         case "50":
-            result = Math.round((num * (8 / 6)) / 0.5) * 0.5;
+            result = num * (8 / 6);
+            result = parseFloat(result.toFixed(3));
             break;
         case "32":
-            result=num*3;
+            result=num*2;
             break;
     }
     calcHistory.push(result);
@@ -188,6 +189,7 @@ function standardMode(button){
         
         //combines the running total and then calculates how many trays are needed.
         else if(button.classList.contains("equals")){
+            running = Math.round(running*2)/2;
             spaceLeft = 8 - (running%8);
             boxesNeeded = Math.ceil(running / 8);
 			
@@ -281,9 +283,9 @@ function testMode(button){
         
     else if (button.classList.contains("test")){
 		if (truckflag == false){
-        upperScreenText.textContent = traytotal + " trays = " + boxesNeeded + " box(es)";
-        resultText.textContent = "Trays Needed = " + spaceLeft;
-		}
+            upperScreenText.textContent = traytotal + " trays = " + boxesNeeded + " box(es)";
+            resultText.textContent = "Trays Needed = " + spaceLeft;
+            }
 		else{
 			upperScreenText.textContent = "To get to TRUCK shipping:";
 			resultText.textContent = toTruck + " more trays";
